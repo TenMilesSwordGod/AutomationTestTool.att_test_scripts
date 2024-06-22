@@ -2,6 +2,7 @@ import sqlite3
 
 from att_test_scripts.local_tools.basic_sql import BasicDB
 
+
 class SQLiteDB(BasicDB):
     def __init__(self, db_name):
         super().__init__()
@@ -16,7 +17,6 @@ class SQLiteDB(BasicDB):
         truncate_table_sql = f"DELETE FROM {table_name}"
         self.cursor.execute(truncate_table_sql)
         self.conn.commit()
-
 
     def table_exists(self, table_name):
         return self.conn.execute("SELECT name FROM sqlite_master WHERE type='table' AND name=?",
